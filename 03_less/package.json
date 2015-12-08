@@ -1,0 +1,14 @@
+{
+  "name": "lessprac",
+  "homepage": "https://github.com/radishj/m-zone",
+  "author": "radishj <423261989@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-livereload": "latest",
+    "grunt-contrib-connect": "latest",
+    "grunt-contrib-watch" : "latest",
+    "grunt-contrib-less": "latest",
+    "load-grunt-tasks": "~0.3.0"
+  }
+}
