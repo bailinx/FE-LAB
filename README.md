@@ -1,9 +1,10 @@
 # m-zone
-* 偶尔蹦出“因缺思厅”想法的实现，以及一些练手项目
+* Some interesting ideas, and some practice projects
 
 # 目录
 * 01\_10lieqi(QQ空间10张猎奇图切图)
-
+* 02\_angular
+* 03\_less
 
 
 ## License

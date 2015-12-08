@@ -1,0 +1,25 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello Cart</title>
+    </head>
+    <body>
+        <h1>Your Order</h1>
+        <form ng-controller='SelectController'>
+            String : <input type="checkbox"
+                ng-model="funding.startingEstimate"></input>
+            Recommendation:<span ng-bind="funding.needed"></span>
+        </form>
+        <script src="js/angular-1.0.1.min.js"></script>
+        <script>
+            var myAppModule = angular.module('myApp', []);
+            
+            myAppModule.controller('SelectController', function($scope){
+                $scope.funding = { startingEstimate: 0 };
+                computeNeeded = function() {
+                    $scope.funding.needed = $scope.funding.startingEstimate * 10;
+                }
+                $scope.$watch('funding.startingEstimate', computeNeeded);
+            });
+        </script>
+    </body>
+</html>
