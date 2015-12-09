@@ -27,7 +27,8 @@ module.exports = function(grunt) {
                     livereload: '<%=connect.options.livereload%>'
                 },
                 files: [
-                    "less/*.less"
+                    "less/*.less",
+                    "dist/**/*.html"
                 ],
                 tasks: ['less:compile']
             }
