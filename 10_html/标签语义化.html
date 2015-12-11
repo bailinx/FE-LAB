@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Html5 - 语义化标签(一)</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+</head>
+<body>
+<h2>HTML5学习之一 - 文本元素标签</h2>
+<section>
+    <article>
+        <header>
+            <h3>文本字体元素</h3>
+            <p>文字对SEO影响很大，而HTML5对一些文本字体元素进行重新定义，也增加了一些新的，如下文</p>
+        </header>
+        <div class="art-content">
+            <ul>
+                <li><code>a</code>(anchor)：页面超链接，可链接本页面也可跳转到其他地址</li>
+                <li><code>em</code>(emphasis)：局部强调，不会引起语义变化，仅加强语句的侧重</li>
+                <li><code>p</code>段落</li>
+                <li><code>b</code>(bold)：加粗，无强调作用，比如文中的关键字</li>
+                <li><code>i</code>(italic)：倾斜，描述在文中的不同意见或语气或其他一段文本</li>
+                <li><code>code</code>代码块</li>
+                <li><code>q</code>(quote)：引用一段内容</li>
+                <li><code>cite</code>定义引用内容出自书籍或杂志等的标题，不允许其他信息，如作者、日期等</li>
+                <li><code>u</code>(underline)：下划线</li>
+                <li><code>abbr</code>(abbreviation)：定义一个缩写文本(建议在abbr的title中协商缩写的全称)</li>
+                <li><code>dfn</code>(defining instance)：定义一个术语</li>
+                <li><code>var</code>定义代码中的变量(js不就用的这个吗)</li>
+                <li><code>samp</code>(sample)：由程序输出的示例文本</li>
+                <li><code>kbd</code>(keyboard)：定义由键盘输入的文本</li>
+                <li><code>wbr</code>(word break)：定义换行的时机(试了下，当屏幕缩小到一定宽度，单词该换行时根据wbr自动拆分换行)</li>
+                <li><code>span</code>用来组合文档中的行内元素</li>
+                <li><code>br</code>换行</li>
+            </ul>
+            <article>
+                <header><h3>文本字体元素标签使用注意</h3></header>
+                <div class="art-content">
+                    <ul>
+                        <li>表重要的使用strong，表强调的使用em，表标题的使用h1-h6，表高亮或者标记文本的使用p，如果都不适合用b。</li>
+                        <li>em的强调是用在语句某个单词上来改变句子的侧重，可以说是局部的，而strong和局部还是全局无关，局部强调用strong也可以，strong强调的是重要性，不会改变句意。
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </article><!-- /article -->
+    <section>
+        <article>
+            <header>
+                <h3>Time标签</h3>
+                <p>
+                    <time datetime="2015-09-16" pubdate>2015年09月15日</time>
+                </p>
+
+            </header>
+            <p>
+                <code>time</code>标签一般有三部分组成：
+                <ul>
+                    <li>1.机器可识别的时间戳datetime="2015-09-16T14:11:50+08:00"，T后面是时间，+后面跟的是时区</li>
+                    <li>2.展示的时间内容，美观即可</li>
+                    <li>3.可选的pubdate表示，boolean类型</li>
+                    <li>如果time在article里表示整篇文章发布的时间，如果在article外表示整篇文档发布的时间</li>
+                </ul>
+            </p>
+        </article><!-- /article -->
+    </section>
+
+</section>
+
+</body>
+</html>

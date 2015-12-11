@@ -2,10 +2,11 @@
 * Some interesting ideas, and some practice projects
 
 # 目录
-* 01\_10lieqi(QQ空间10张猎奇图切图)
-* 02\_angular
-* 03\_less
+* 01\_10lieqi
+* 10\_html
+* 11\_js
+* 12\_css3
+* 13\_less
+* 20\_angular
+* 30\_require
 
-
-## License
-[MIT](http://opensource.org/licenses/MIT)
