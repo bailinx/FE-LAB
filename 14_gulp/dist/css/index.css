@@ -1,0 +1,91 @@
+#header {
+  color: #4D926F;
+}
+h2 {
+  color: #4D926F;
+}
+h3 {
+  color: #4D926F;
+  font-size: 1.5em;
+}
+h4 {
+  font-size: 2em;
+}
+.line {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+.item {
+  position: relative;
+  float: left;
+  left: 100%;
+}
+#item1 {
+  margin-left: -100%;
+  width: 30%;
+}
+/*Extend*/
+.inline,
+nav ul {
+  color: red;
+}
+nav ul {
+  background-color: blue;
+}
+/*loop*/
+div {
+  width: 10px;
+  width: 20px;
+  width: 30px;
+  width: 40px;
+  width: 50px;
+}
+/*栅格递归循环*/
+.column-xs-1 {
+  width: 16.66666667%;
+}
+.column-xs-2 {
+  width: 33.33333333%;
+}
+.column-xs-3 {
+  width: 50%;
+}
+.column-xs-4 {
+  width: 66.66666667%;
+}
+.column-xs-5 {
+  width: 83.33333333%;
+}
+.column-xs-6 {
+  width: 100%;
+}
+/*合并属性*/
+.myclass {
+  box-shadow: inset 0 0 10px #555, 0 0 20px black;
+}
+/*父选择器*/
+p,
+a,
+ul,
+li {
+  border-top: 2px solid #366;
+}
+p p,
+p a,
+p ul,
+p li,
+a p,
+a a,
+a ul,
+a li,
+ul p,
+ul a,
+ul ul,
+ul li,
+li p,
+li a,
+li ul,
+li li {
+  border: 0;
+}
