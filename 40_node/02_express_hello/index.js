@@ -10,6 +10,8 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3000);
+// 禁止显示开发工具
+app.disable('x-powered-by');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -23,6 +25,15 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
     res.render('home');
+});
+
+app.get('/head', function(req, res) {
+    res.type('text/plain');
+    var s = '';
+    for(var name in req.headers) {
+        s += name + req.headers[name] + '\n';
+    }
+    res.send(s);
 });
 
 app.get('/about', function(req, res) {
