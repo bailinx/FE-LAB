@@ -1,0 +1,19 @@
+{
+  "name": "02_express_hello",
+  "version": "1.0.0",
+  "description": "express helloworld",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "simple",
+    "express"
+  ],
+  "author": "radishj <423261989@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express3-handlebars": "^0.5.2"
+  }
+}
