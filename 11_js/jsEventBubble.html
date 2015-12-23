@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>js事件冒泡</title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //事件冒泡
+            //点击最小的那个，外面所有的都会被上色。
+            // $('#d4').click(function () { $(this).css('background-color', 'yellow') });
+            // $('#d3').click(function () { $(this).css('background-color', 'green') });
+            // $('#d2').click(function () { $(this).css('background-color', 'blue') });
+            // $('#d1').click(function () { $(this).css('background-color', 'red') });
+
+            //事件委托
+            //当最顶层捕获点击事件时，查看事件来源于哪一层，然后只将那一层涂色。
+            $('#d1').click(function (e) {
+               e = e || window.event;
+               var target = $(e.target || e.srcElement);
+               var id = target.attr('id');
+               if (id === 'd4') {
+                   target.css('background-color', 'yellow');
+               } else if (id === 'd3') {
+                   target.css('background-color', 'green');
+               } else if (id === 'd2') {
+                   target.css('background-color', 'blue');
+               }
+               else {
+                   target.css('background-color', 'red');
+               }
+            });
+            $('#bindBubble').click(function () {
+                if ($(this).is(':checked')) {
+                    $('#d4').bind('click', function (e) {
+                        //阻止冒泡，父层将无法接收到点击事件。
+                        e.stopPropagation();
+                        //e.preventDefault(); 取消了默认行为,比如type='submit'的按钮提交
+                        //return false;
+                        alert('冒泡被阻止，这块将不会改变颜色');
+                    });
+                } else {
+                    $('#d4').unbind('click');
+                }
+            });
+
+            //重置
+            $('#reset1').click(function () { $('.white').css('background-color', '#fff') });
+        });
+
+    </script>
+    <style type="text/css">
+        .white {
+            background-color: #fff;
+        }
+
+        #d1 {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 50px 50px;
+        }
+
+        #d2 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 50px 50px;
+        }
+
+        #d3 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 50px 50px;
+        }
+
+        #d4 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 50px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1" class="white">
+        <div id="d2" class="white">
+            <div id="d3" class="white">
+                <div id="d4" class="white"></div>
+            </div>
+        </div>
+    </div>
+    <button id="reset1">重置</button>
+    <input id="bindBubble" type="checkbox" value="选择给最里层绑定阻止冒泡"/><label>选择给最里层绑定阻止冒泡</label>
+</body>
+</html>
