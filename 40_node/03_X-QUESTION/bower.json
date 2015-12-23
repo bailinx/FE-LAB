@@ -1,0 +1,25 @@
+{
+  "name": "X-MEAN-SEED",
+  "description": "一款集成MEAN（Mongo, Express, Angular, Node）的种子项目",
+  "main": [],
+  "authors": [
+    "radishj <423261989@qq.com>"
+  ],
+  "license": "MIT",
+  "keywords": [],
+  "homepage": "https://github.com/radishj/X-MEAN-SEED",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "html5-boilerplate": "~5.2.0",
+    "requirejs": "~2.1.22",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "jquery": "~2.1.4"
+  }
+}

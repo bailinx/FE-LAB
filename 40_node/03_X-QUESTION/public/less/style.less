@@ -1,0 +1,82 @@
+html {
+  font-family: "Lucida Grande", "Microsoft JhengHei", "Microsoft YaHei";
+}
+input{
+  box-sizing: border-box;
+  padding: .2rem .3rem;
+  border:1px solid #909090;
+  -webkit-transition: box-shadow 0.30s ease-in-out;   //只让box-shadow属性做过渡效果！
+  -moz-transition:  box-shadow 0.30s ease-in-out;      //firefox
+  &:focus {
+    outline:none;
+    border:#87C6F9 1px solid;
+    box-shadow: 0 0 8px rgba(103, 166, 217, 1);
+  }
+}
+#warp {
+  background-color: #fff;
+}
+.main {
+  text-align: center;
+  width: 40rem;
+  color: #757575;
+  position: absolute;
+  top: 20%; left: 0; bottom: 0; right: 0;
+  margin: auto;
+}
+.main article header h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+.input-group {
+  width: 100%;
+  margin-bottom: 0;
+}
+.input-group input {
+  height: 2.3rem;
+  border-radius: 5px 0 0 5px;
+  width: 18rem;
+}
+.input-group button {
+  height: 2.3rem;
+  margin-left: -5px;
+  border-radius: 0 5px 5px 0;
+}
+.btn {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-color: #adadad;
+  &:hover {
+    color: #333;
+    background-color: #e6e6e6;
+  }
+}
+.pre-rst {
+  margin: 2em auto;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  width: 25em;
+  border: 1px solid #e6e6e6;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.footer {
+  position: absolute;
+  right: 5em;
+  bottom: 1em;
+  opacity: .5;
+  font-size: 1em;
+}
+.lt-ie9 .warp{
+  display: none;
+}
+.lt-ie9 .browsehappy {
+  text-align: center;
+  font-size: 40px;
+}
