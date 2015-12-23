@@ -60,7 +60,7 @@ input:focus {
   padding: 15px;
   box-sizing: border-box;
   background-color: #fafafa;
-  width: 100%;
+  width: 25em;
   border: 1px solid #e6e6e6;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -75,6 +75,34 @@ input:focus {
   bottom: 1em;
   opacity: .5;
   font-size: 1em;
+}
+.mask {
+  display: table;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  background: #000\9;
+  filter: alpha(opacity=60);
+}
+.mask-cnt {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.mask-cnt .mask-close {
+  cursor: pointer;
+}
+.mask-cnt .mask-close:before {
+  content: '×';
+  color: #fff;
+  font-weight: 700;
+  font-size: 50px;
+  position: relative;
+  top: -190px;
+  left: -20px;
 }
 .lt-ie9 .warp {
   display: none;

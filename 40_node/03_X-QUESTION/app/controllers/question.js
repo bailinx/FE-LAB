@@ -33,8 +33,9 @@ quesController.get = function (req, res, next) {
                 for( var idx=0; idx<dataList.length; idx++) {
                     var item = {};
                     item.question = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].content;
-                    item.options = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].optionInfoList;
-                    //dataList[idx].examRecordItems[0].question.questInfoDetailList[0].answer
+	                item.options = [];
+	                // item.options = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].optionInfoList;
+                    // dataList[idx].examRecordItems[0].question.questInfoDetailList[0].answer
                     var ansIndex = parseInt(dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer,10);
                     item.result = item.options[ansIndex].content;
                     result.push(item);
