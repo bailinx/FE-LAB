@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser(config.cookieSecret));
 app.use(require('less-middleware')(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.disable('x-powered-by');
+//app.disable('x-powered-by');
 
 routes(app);
 

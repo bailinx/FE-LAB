@@ -3,9 +3,13 @@ var index = require('./index'),
 	question = require('./question'),
 	config = require('../config/config'),
 	express = require('express'),
-	route = express.Router();
+	route = express.Router(),
+	middleware = {};
 
 module.exports = function (app) {
+	middleware = require('../middleware/common')(app, middleware);
+	// 设置中间件
+	app.use(middleware.setPowerBy);
 	app.use('/', index);
 	app.use('/question', question);
 
