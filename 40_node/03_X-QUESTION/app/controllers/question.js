@@ -31,13 +31,23 @@ quesController.get = function (req, res, next) {
 		if( !err ) {
             if(dataList.length > 0) {
                 for( var idx=0; idx<dataList.length; idx++) {
-                    var item = {};
+                    var item = {}, answer = "";
                     item.question = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].content;
-	                item.options = [];
-	                // item.options = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].optionInfoList;
+
+	                // item.options = [];
+					var options = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].optionInfoList;
                     // dataList[idx].examRecordItems[0].question.questInfoDetailList[0].answer
-                    var ansIndex = parseInt(dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer,10);
-                    item.result = item.options[ansIndex].content;
+                    var ansList = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer.split(',');
+					if(ansList.length > 1) {
+						for( var temp=0; temp< ansList.length; temp++ ) {
+							answer += (temp+1) + ":" + options[temp].content + " ";
+						}
+					} else {
+						answer = options[0].content;
+					}
+					//var ansIndex = parseInt(dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer,10);
+                    //item.result = item.options[ansIndex].content;
+					item.result = answer;
                     result.push(item);
                 }
             }

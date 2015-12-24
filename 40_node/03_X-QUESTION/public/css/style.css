@@ -18,7 +18,7 @@ input:focus {
 }
 .main {
   text-align: center;
-  width: 40rem;
+  width: 60rem;
   color: #757575;
   position: absolute;
   top: 20%;
@@ -60,7 +60,7 @@ input:focus {
   padding: 15px;
   box-sizing: border-box;
   background-color: #fafafa;
-  width: 25em;
+  width: 35em;
   border: 1px solid #e6e6e6;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -97,12 +97,12 @@ input:focus {
 }
 .mask-cnt .mask-close:before {
   content: '×';
-  color: #fff;
+  color: #d2d3ea;
   font-weight: 700;
   font-size: 50px;
   position: relative;
-  top: -190px;
-  left: -20px;
+  top: -205px;
+  left: -22px;
 }
 .lt-ie9 .warp {
   display: none;
