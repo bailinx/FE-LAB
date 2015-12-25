@@ -7,7 +7,8 @@ indexController.index = function (req, res, next) {
 		req.connection.remoteAddress ||
 		req.socket.remoteAddress ||
 		req.connection.socket.remoteAddress;
-    logger.log('来访ip :' + ip);
+    logger.info('来访ip :' + ip);
+	console.info('来访ip :' + ip);
 	res.render('index', {title: '每日一答 ▪ 查询'});
 }
 
