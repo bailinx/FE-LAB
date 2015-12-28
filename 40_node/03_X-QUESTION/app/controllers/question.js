@@ -14,7 +14,7 @@ quesController.list = function (req, res, next) {
 	/*var ques = new quesModel({
 		examRecordItems: {
 			questInfo: {
-				inspectPoint: "����"
+				inspectPoint: "的说法是否"
 			}
 		}
 	});
