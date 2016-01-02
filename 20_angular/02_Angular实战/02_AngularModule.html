@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="HelloAngular">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>01_HelloAngular</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+<body>
+    <div ng-controller='helloAngular'>
+        <p>{{greeting.text}},Angular</p>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+    <script type="text/javascript">
+        var myModule = angular.module('HelloAngular', []);
+
+        myModule.controller("helloAngular", ['$scope', function HelloAngular ($scope) {
+                $scope.greeting = {
+                    text: 'hello world'
+                };
+            }
+        ])
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>01_HelloAngular</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+<body>
+    <div ng-controller='HelloAngular'>
+        <p>{{greeting.text}},Angular</p>
+    </div>
+    <!-- ng1.3.0+不再支持IE8，AngularJS 1.3版本之后 不再允许一个全局的function作为controller -->
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+    <script type="text/javascript">
+        function HelloAngular ( $scope ) {
+            $scope.greeting = {
+                text: 'hello'
+            }
+        }
+    </script>
+</body>
+</html>
