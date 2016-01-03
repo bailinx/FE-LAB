@@ -14,7 +14,7 @@
     <div ng-controller='listCtrl'>
         <ol>
             <li ng-repeat='name in names'>
-                {{name}}
+                {{name}} from {{root}}
             </li>
         </ol>
     </div>
@@ -29,8 +29,10 @@
             }
         ]);
 
-        myModule.controller("listCtrl", ['$scope', function ($scope) {
-                $scope.names = ['jack', 'json', 'c#', 'java'];
+        myModule.controller("listCtrl", ['$scope', '$rootScope', function ($scope, $rootScope) {
+            $scope.names = ['jack', 'json', 'c#', 'java'];
+            // 根scope
+            $rootScope.root = 'angular';
         }])
     </script>
 </body>
