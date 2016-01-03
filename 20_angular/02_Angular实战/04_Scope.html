@@ -3,24 +3,35 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>02_AngularModule</title>
+    <title>04_$Scope</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 </head>
-<body ng-cloak>
-    <div ng-controller='helloAngular'>
+<body>
+    <div ng-controller='GreetCtrl'>
         <p>{{greeting.text}},Angular</p>
+    </div>
+    <div ng-controller='listCtrl'>
+        <ol>
+            <li ng-repeat='name in names'>
+                {{name}}
+            </li>
+        </ol>
     </div>
     <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
     <script type="text/javascript">
         var myModule = angular.module('HelloAngular', []);
 
-        myModule.controller("helloAngular", ['$scope', function HelloAngular ($scope) {
+        myModule.controller("GreetCtrl", ['$scope', function HelloAngular ($scope) {
                 $scope.greeting = {
                     text: 'hello world'
                 };
             }
-        ])
+        ]);
+
+        myModule.controller("listCtrl", ['$scope', function ($scope) {
+                $scope.names = ['jack', 'json', 'c#', 'java'];
+        }])
     </script>
 </body>
 </html>
