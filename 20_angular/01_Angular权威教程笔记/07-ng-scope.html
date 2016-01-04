@@ -1,0 +1,33 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello Scope</title>
+    </head>
+    <body>
+        <h1>作用域嵌套</h1>
+        <p>
+            ng应用的任何一部分，无论它渲染在哪个上下文中，都有父级作用域存在。对于ng-app所处的层级来说，它的父级作用域就是$rootScope<br>
+            有一个例外：在指令内部创建的作用域被称为孤立作用域
+        </p>
+        <div ng-controller="ParentController">
+            <div ng-controller="ChildController">
+                <a ng-click="sayHello()" href="javascript:;">点我试试</a>
+            </div>
+            {{persion}}
+        </div>
+        <script src="js/angular-1.0.1.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", []);
+
+            myAppModule.controller('ParentController', function($scope){
+                $scope.persion = {
+                    greeted: false
+                }
+            });
+            myAppModule.controller('ChildController', function($scope){
+                $scope.sayHello = function () {
+                    $scope.persion.name = 'Hello, radishj';
+                }
+            });
+        </script>
+    </body>
+</html>
