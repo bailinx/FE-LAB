@@ -1,0 +1,30 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello Express</title>
+    </head>
+    <body>
+        <h1>解析ng表达式</h1>
+        <p>
+            手动解析表达式
+        </p>
+        <div ng-controller="MyController">
+            <input ng-model="expr" type="text" placeholer="输入一个表达式..">
+            <h2>{{parseValue}}</h2>
+        </div>
+        <script src="js/angular-1.0.1.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", []);
+
+            myAppModule.controller('MyController', function($scope, $parse){
+                $scope.$watch('expr', function (newVal, oldVal, scope) {
+                    if (newVal !== oldVal) {
+                        // 用该表达式设置parseFun
+                        var parseFun = $parse(newVal);
+                        // 获取经过解析后的值
+                        $scope.parseValue = parseFun(scope);
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>
