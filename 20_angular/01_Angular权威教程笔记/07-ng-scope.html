@@ -25,6 +25,7 @@
             });
             myAppModule.controller('ChildController', function($scope){
                 $scope.sayHello = function () {
+                    $scope.persion.greeted = true;
                     $scope.persion.name = 'Hello, radishj';
                 }
             });
