@@ -1,0 +1,70 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello filter</title>
+    </head>
+    <body>
+        <h1>filter过滤器</h1>
+        <p>
+
+        </p>
+        <div ng-controller="MyController">
+            Name:{{name}}<br>
+            UpperCase:{{name | uppercase}}<br>
+            数字处理：{{number}}<br>
+            保留两位小数: {{number | number:2}}<br>
+            可以用多个|使用多个过滤器
+            货币:{{money}}<br>
+            显示货币格式:{{money|number:1|currency}}<br>
+            日期: {{now}}<br>
+            Medium: {{now | date:'medium'}}<br>
+            Short: {{now | date:'short'}}<br>
+            FullDate: {{now | date:'fullDate'}}<br>
+            年份格式化: {{now | date:'yyyy'}}<br>
+            月份格式化: {{now | date:'MM'}}<br>
+            月份英文: {{now | date:'MMMM'}}<br>
+            日期格式化: {{now | date:'dd'}}<br>
+            自定义格式化: {{now | date:'yyyy-MM-dd hh:mm:ss'}}<br>
+            数组过滤: {{['Ari','Lerner','Likes','To','Eat','Pizza'] | filter:'e'}}<br>
+            对象过滤:{{ [{
+            'name': 'Ari',
+            'City': 'San Francisco',
+            'favorite food': 'Pizza'
+            },{
+            'name': 'Nate',
+            'City': 'San Francisco',
+            'favorite food': 'indian food'
+            }] | filter:{'favorite food': 'Pizza'} }}
+            <!-- [{"name":"Ari","City":"SanFrancisco","favoritefood":"Pizza"}] --><br>
+            自定义方法过滤：{{ ['Ari','likes','to','travel'] | filter:isCapitalized }}<br>
+            Json转字符串：{{ {'name': 'Ari', 'City': 'SanFrancisco'} | json }}<br>
+            字符串截取(ng1.0不支持)：{{ 'this is a test' | limitTo: 3}}<br>
+            从后往前：{{ 'this is a test' | limitTo: -3}}<br>
+            排序(第二个参数:true代表排序结果反转，false默认代表正序)：{{ [{
+                    'name': 'Ari',
+                    'status': 'awake'
+                    },{
+                    'name': 'Q',
+                    'status': 'sleeping'
+                    },{
+                    'name': 'Nate',
+                    'status': 'awake'
+                    }] | orderBy:'name':true }}<br>
+        </div>
+        <!--<script src="js/angular-1.0.1.min.js"></script>-->
+        <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", []);
+
+            myAppModule.controller('MyController', ['$scope', '$filter', function($scope, $filter){
+                $scope.name = $filter('lowercase')('RadishJ');
+                $scope.number = 123.987654;
+                $scope.money = 66.66;
+                $scope.now = new Date();
+                // 首写大写
+                $scope.isCapitalized = function (str) {
+                    return str[0] == str[0].toUpperCase();
+                }
+            }]);
+        </script>
+    </body>
+</html>
