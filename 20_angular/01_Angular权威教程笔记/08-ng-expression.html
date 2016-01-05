@@ -19,6 +19,7 @@
                 $scope.$watch('expr', function (newVal, oldVal, scope) {
                     if (newVal !== oldVal) {
                         // 用该表达式设置parseFun
+                        // newVal 可以是表达式，比如1+1神马的，也是666
                         var parseFun = $parse(newVal);
                         // 获取经过解析后的值
                         $scope.parseValue = parseFun(scope);

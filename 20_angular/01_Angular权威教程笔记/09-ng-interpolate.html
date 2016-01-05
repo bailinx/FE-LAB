@@ -1,0 +1,35 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello $interpolate</title>
+    </head>
+    <body>
+        <h1>$interpolate服务</h1>
+        <p>
+            手动解析表达式
+        </p>
+        <div ng-controller="MyController">
+            <input ng-model="to" type="email" placeholer="输入一个邮箱..">
+            <br><br>
+            Email内容:
+            <textarea ng-model="emailBody"></textarea>
+            <br>
+            <h2>{{previewText}}</h2>
+        </div>
+        <script src="js/angular-1.0.1.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", []);
+
+            myAppModule.controller('MyController', function($scope, $interpolate){
+                // 注意！这里一定要显式初始化，不然无法使用表达式
+                $scope.to = '423261989@qq.com';
+                $scope.emailBody = 'hello, {{to}}';
+                $scope.$watch('emailBody', function (body) {
+                    if (body) {
+                        var template = $interpolate(body);
+                        $scope.previewText = template({to: $scope.to});
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>
