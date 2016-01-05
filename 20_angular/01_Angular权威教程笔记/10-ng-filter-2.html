@@ -1,0 +1,41 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello filter 进阶</title>
+    </head>
+    <body>
+        <h1>自定义filter过滤器</h1>
+        <p>
+
+        </p>
+        <div ng-controller="MyController">
+            Name:{{name}}<br>
+            首字母大写：{{ name | capitalize }}
+        </div>
+        <!--<script src="js/angular-1.0.1.min.js"></script>-->
+        <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", ['myApp.filters']);
+
+            myAppModule.controller('MyController', ['$scope', function($scope){
+                $scope.name = 'hello baili ~';
+
+            }]);
+
+            angular.module('myApp.filters', []).filter('capitalize', function () {
+                return function(input) {
+                    if (input) {
+                        // 注：js slice表示从数组选取，splice表示删除并返回
+                        // arrayObject.splice(index,howmany,item1,.....,itemX)
+                        var oldVal = input.split(' '),
+                            newVal = [];
+                        for( var idx in  oldVal) {
+                            newVal.push(oldVal[idx][0].toUpperCase() + oldVal[idx].slice(1));
+                        }
+                        return newVal.join(' ');
+                        //return input[0].toUpperCase() + input.slice(1);
+                    }
+                };
+            })
+        </script>
+    </body>
+</html>
