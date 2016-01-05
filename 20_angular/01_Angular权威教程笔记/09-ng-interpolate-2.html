@@ -1,0 +1,46 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello $interpolate</title>
+    </head>
+    <body>
+        <h1>$interpolate服务进阶</h1>
+        <p>
+            更改$interpolate定界符及创建服务
+        </p>
+        <div ng-controller="MyController">
+            <input ng-model="to" type="email" placeholer="输入一个邮箱..">
+            <br><br>
+            Email内容:
+            <textarea ng-model="emailBody"></textarea>
+            <br>
+            <h2>__previewText__</h2>
+        </div>
+        <script src="js/angular-1.0.1.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", ['emailParser']);
+
+            myAppModule.controller('MyController', ['$scope', 'EmailParser', function($scope, EmailParser){
+                $scope.to = '423261989@qq.com';
+                $scope.emailBody = 'Hello __to__';
+                $scope.$watch('emailBody', function (body) {
+                    if (body) {
+                        $scope.previewText = EmailParser.parse(body, {to: $scope.to});
+                    }
+                })
+            }]);
+
+            angular.module('emailParser', []).config(['$interpolateProvider', function ($interpolateProvider) {
+                $interpolateProvider.startSymbol('__');
+                $interpolateProvider.endSymbol('__');
+            }]).factory('EmailParser', ['$interpolate', function ($interpolate) {
+                // 处理解析的服务
+                return {
+                    parse: function (text, context) {
+                        var template = $interpolate(text);
+                        return template(context);
+                    }
+                }
+            }]);
+        </script>
+    </body>
+</html>
