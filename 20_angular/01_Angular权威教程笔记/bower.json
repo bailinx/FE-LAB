@@ -1,0 +1,28 @@
+{
+  "name": "01_Angular权威教程笔记",
+  "homepage": "https://github.com/radishj/X-Zone",
+  "authors": [
+    "radishj <423261989@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "学习笔记"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3.20",
+    "angular-messages": "~1.4.8"
+  }
+}

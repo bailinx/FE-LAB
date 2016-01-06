@@ -1,0 +1,121 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello ngMessages</title>
+        <style type="text/css">
+            input.ng-invalid {
+                border: 1px solid red;
+            }
+            input.ng-valid {
+                border: 1px solid green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ngMessages使用</h1>
+        <ol>
+            <li>$: bower install --save angular-messages</li>
+            <li>表单上添加novalidate，取消浏览器默认验证</li>
+            <li>检测未修改的表单，未修改为true：formName.inputFieldName.$pristine</li>
+            <li>检测合法的表单：formName.inputFieldName.$valid</li>
+            <li>检测不合法的表单：formName.inputFieldName.$invalid</li>
+            <li>错误：formName.inputfieldName.$error</li>
+        </ol>
+        <div ng-controller="MyController">
+            <form name="form" novalidate>
+                <label for="email">邮箱(type=email)：
+                    <input type="email" name="email"
+                       ng-model="email" placeholer="请输入邮箱.." required>
+                </label>
+                <br><br>
+                <label for="userName">姓名(最大长度)：
+                    <input type="text" name="userName" ng-model="userName" ng-maxlength="5" required ng-messages-multiple/>
+                    ng-messages-multiple 指令能显示多个错误信息
+                </label>
+                <div class="error" ng-messages="form.userName.$error">
+                    <div ng-message="required">姓名不能为空</div>
+                    <div ng-message="maxlength">最大长度为5</div>
+                </div>
+                <br><br>
+                <label for="nick">昵称(只能输入大小写字母)：
+                    <input type="text" name="nick" ng-model="nick" ng-pattern="/^[a-zA-Z]+$/"/>
+                </label>
+                <br><br>
+                <label for="age">年龄(只能输入数字)：
+                    <input type="number" name="age" ng-model="age"/>
+                </label>
+                <br><br>
+                <label for="home">主页(只能输入URL)：
+                    <input type="url" name="home" ng-model="home" xfocus />
+                    <div ng-show="form.home.$focused">Focus</div>
+                </label>
+                <br><br>
+                <label for="diyDirec">指令(验证1-10，全小写验证成功)：
+                    <input type="text" name="diyDirec" onetoten ng-model="diyDirec"/>
+                </label>
+
+                <input type="submit" value="提交" ng-disabled="form.$invalid">
+
+            </form>
+        </div>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-messages/angular-messages.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", ['ngMessages']);
+            // 添加指令
+            myAppModule.directive('onetoten', function () {
+                return {
+                    require: '?ngModel',
+                    link: function (scope, ele, attrs, ngModel) {
+                        if (!ngModel) return;
+                        ngModel.$parsers.unshift(
+                            function (viewValue) {
+                                console.log(viewValue);
+                                // ngModel 中判空
+                                if (ngModel.$isEmpty(viewValue)) {
+                                    console.log('empty');
+                                }
+                                var i = parseInt(viewValue, 10);
+                                if ( i >= 0 && i < 10) {
+                                    ngModel.$setValidity('onetoten', true);
+                                    return viewValue;
+                                } else {
+                                    ngModel.$setValidity('onetoten', false);
+                                    return undefined;
+                                }
+                            }
+                        );
+                    }
+                }
+            });
+            // 使用的时候ng-Focus 或者指令名全小写能捕获到
+            myAppModule.directive('xfocus', [function () {
+                var FOCUS_CLASS = "ng-focused";
+                return {
+                    // A:属性（默认），E:元素<my-directive></my-directive>
+                    // C:类名<div class="my-directive:expression;"></div>
+                    // M:注释<!-- directive:my-directive expression-->
+                    restrict: 'A',
+                    require: 'ngModel',
+                    link: function (scope, elem, attrs, ctrl) {
+                        ctrl.$focused = false;
+                        elem.bind('focus', function (event) {
+                            elem.addClass(FOCUS_CLASS);
+                            scope.$apply(function() {
+                                ctrl.$focused = true;
+                            });
+                        }).bind('blur', function (event) {
+                            elem.removeClass(FOCUS_CLASS);
+                            scope.$apply(function () {
+                                ctrl.$focused = false;
+                            });
+                        });
+                    }
+                }
+            }]);
+            myAppModule.controller('MyController', ['$scope', function($scope){
+
+            }]);
+
+        </script>
+    </body>
+</html>
