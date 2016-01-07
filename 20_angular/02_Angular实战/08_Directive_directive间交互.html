@@ -1,0 +1,93 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello directive</title>
+        <style type="text/css">
+            input.ng-invalid {
+                border: 1px solid red;
+            }
+            input.ng-valid {
+                border: 1px solid green;
+            }
+        </style>
+        <link href="http://libs.baidu.com/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container" ng-controller="MyController">
+            <div class="row">
+                <h1>angular 指令进阶 - 指令间交互</h1>
+            </div>
+            <div class="row">
+                <superman strength>动感超人--力量</superman>
+            </div>
+            <div class="row">
+                <superman strength speed>动感超人--力量+敏捷</superman>
+            </div>
+            <div class="row">
+                <superman strength speed light>动感超人--力量+敏捷+发光</superman>
+            </div>
+        </div>
+        <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", []);
+            myAppModule.directive("superman", function () {
+                return {
+                    //E:元素 A：属性 C：class M：注释
+                    restrict: 'E',// 约定,限制。并且可以组合使用EAC
+                    scope: {},
+                    controller: function ($scope) {
+                        // 暴漏方法，供外部调用
+                        $scope.abilities = [];// 能力
+                        this.addStrength = function () {
+                            $scope.abilities.push("strength");
+                        }
+                        this.addSpeed = function () {
+                            $scope.abilities.push("speed");
+                        }
+                        this.addLight = function () {
+                            $scope.abilities.push("light");
+                        }
+                    },
+                    link: function (scope, element, attr) {
+                        // 指定元素内部事务，写在link里
+                        element.addClass("btn btn-primary");
+                        element.bind('mouseenter', function () {
+                            console.log(scope.abilities);
+                        });
+                    }
+                }
+            });
+
+            myAppModule.directive('strength', function () {
+                return {
+                    require: '^superman', // 依赖于superman
+                    link: function (scope, element, attr, supermanCtrl) {
+                        supermanCtrl.addStrength();
+                    }
+                }
+            });
+
+            myAppModule.directive('speed', function () {
+                return {
+                    require: '^superman',
+                    link: function (scope, element, attr, supermanCtrl) {
+                        supermanCtrl.addSpeed();
+                    }
+                }
+            });
+
+            myAppModule.directive('light', function () {
+                return {
+                    require: '^superman',
+                    link: function (scope, element, attr, supermanCtrl) {
+                        supermanCtrl.addLight();
+                    }
+                }
+            });
+            myAppModule.controller('MyController', ['$scope', function($scope){
+
+            }]);
+
+        </script>
+    </body>
+</html>
