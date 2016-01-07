@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <div ng-controller="myController">
+        <h1>transclude让指令支持嵌套</h1>
+        <hello>
+            <div>我是内部本来就有的内容</div>
+        </hello>
+        <ol>
+            <li>加载阶段（加载ng.js找到ng-app指令，确定应用的边界）</li>
+            <li>编译阶段（compile）（遍历Dom，找到所有指令，如果存在compile，则调用）</li>
+            <li>链接阶段（link）（对每一条指令运行link函数）（link函数一般用来操作DOM，绑定事件监听器）</li>
+        </ol>
+        <h1>Loader指令，加载数据</h1>
+        <loader howToLoad="loadData()"></loader>
+    </div>
+    <h1>我是另一个controller</h1>
+    <div ng-controller="myController2">
+        <loader howToLoad="loadData2()"></loader>
+    </div>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myController',['$scope', function ($scope) {
+        $scope.loadData = function () {
+            console.log('loading data...');
+        }
+    }]);
+    app.controller('myController2',['$scope', function ($scope) {
+        $scope.loadData2 = function () {
+            console.log('loading data2222222222222222222...');
+        }
+    }]);
+    // 注射器载入完成后执行一次
+    app.run(function ($templateCache) {
+        $templateCache.put("hello.html", "<div>hello everyone~~~<div ng-transclude></div></div>");
+    })
+    // 推荐使用元素和属性的方式使用指令
+    // 当需要创建带有自己的模板的指令时，使用元素名称的方式创建指令
+    // 当需要为已有的Html标签增加功能时，使用属性的方式创建指令
+    app.directive('hello', function ($templateCache) {
+        return {
+            restrict: 'AE',// A:属性 E：元素 M：注释 C：Class
+            transclude: true,// 这里需要设置为true
+            template: $templateCache.get("hello.html")
+            // templateUrl: '06_Directive_2_tmpl.html'// 放在模板中载入
+            // compile: function () {
+
+            // },
+            // link: function () {
+            //     // 操作Dom
+            // }
+        }
+    });
+    app.directive('loader', function ($templateCache) {
+        return {
+            restrict: 'AE',
+            replace: true,
+            template: '<div>我是loader指令，哈哈哈</div>',
+            link: function (scope, element, attr) {
+                element.bind('mouseenter', function(event) {
+                    // scope.loadData();
+                    // scope.$apply('loadData()');
+
+                    // 页面用驼峰命名，调用的时候用全小写
+                    scope.$apply(attr.howtoload);
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>
