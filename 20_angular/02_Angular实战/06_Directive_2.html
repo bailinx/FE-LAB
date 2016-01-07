@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body ng-controller="myController">
+    <hello></hello>
+    <div class="hello"></div>
+    <div hello></div>
+    <!-- directive:hello -->
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myController',['$scope', function ($scope) {
+
+    }]);
+    // 注射器载入完成后执行一次
+    app.run(function ($templateCache) {
+        $templateCache.put("hello.html", "<div>hello everyone~~~</div>");
+    })
+    // 推荐使用元素和属性的方式使用指令
+    // 当需要创建带有自己的模板的指令时，使用元素名称的方式创建指令
+    // 当需要为已有的Html标签增加功能时，使用属性的方式创建指令
+    app.directive('hello', function ($templateCache) {
+        return {
+            restrict: 'AE',// A:属性 E：元素 M：注释 C：Class
+            replace: true,
+            template: $templateCache.get("hello.html")
+            // templateUrl: '06_Directive_2_tmpl.html'// 放在模板中载入
+        }
+    })
+</script>
+</body>
+</html>
