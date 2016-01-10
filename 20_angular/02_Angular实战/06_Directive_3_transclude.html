@@ -34,6 +34,7 @@
     app.directive('hello', function ($templateCache) {
         return {
             restrict: 'AE',// A:属性 E：元素 M：注释 C：Class
+            replace: true,
             transclude: true,// 这里需要设置为true
             template: $templateCache.get("hello.html")
             // templateUrl: '06_Directive_2_tmpl.html'// 放在模板中载入

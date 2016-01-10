@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ng accordion</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <div ng-controller="myController">
+        <h1>ng - Accordion指令</h1>
+        <ol>
+            <li>手风琴实现</li>
+        </ol>
+        <div>
+            <accordion>
+                <expander class='expander' ng-repeat='expander in expanders' expander-title='expander.title'>
+                    {{expander.text}}
+                </expander>
+            </accordion>
+        </div>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myController',['$scope', function ($scope) {
+        $scope.expanders = [{
+                title: 'Click me to expand',
+                text: 'Hi there folks, I am the content'
+            },{
+                title: 'Click this',
+                text: 'I am even better text than you have seen previously'
+            },{
+                title: 'Click Hello',
+                text: 'Hello world.'
+            }
+        ]
+    }]);
+
+    app.directive('accordion', function () {
+        return {
+            restrict: 'E',// A:属性 E：元素 M：注释 C：Class
+            replace: true,// 写成repeat也是坑。。
+            transclude: true,// 这里需要设置为true
+            template: '<div ng-transclude></div>',// 这里是为了嵌入标签内内容
+            controller: function () {
+                var expanders = [];
+                this.gotOpened = function (selectedExpander) {
+                    angular.forEach(expanders, function(expander) {
+                        if (selectedExpander != expander) {
+                            // 设置隐藏
+                            expander.showMe = false;
+                        }
+                    })
+                }
+                this.addExpander = function (expander) {
+                    expanders.push(expander);
+                }
+            }
+        }
+    });
+    app.directive('expander', function () {
+        return {
+            restrict: 'AE',
+            replace: true,
+            transclude: true,
+            require: '^?accordion',
+            scope: {
+                title: '=expanderTitle'// 这里之前写错了，写成expenderTitle..
+            },
+            template: '<div>'
+                    + '<div class="title" ng-click="toggle()">{{title}}</div>'
+                    + '<div class="body" ng-show="showMe" ng-transclude></div>'
+                    + '</div>',// 这里的ng-transclude是为了嵌入{{expander.text}}
+            link: function (scope, element, attr, accordionController) {
+                scope.showMe = false;
+                accordionController.addExpander(scope);
+                scope.toggle = function toggle() {
+                    scope.showMe = !scope.showMe;
+                    accordionController.gotOpened(scope);
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
