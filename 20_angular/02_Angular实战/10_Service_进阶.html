@@ -8,14 +8,10 @@
     <meta name="keywords" content="">
 </head>
 <body>
-    Service的特性
+    <p>Service、Provider、Factory本质都是Provider</p>
     <ol>
-        <li>Service都是单例</li>
-        <li>Service由$injector负责实例化</li>
-        <li>Service在整个应用的生命周期都存在，可以用来共享数据</li>
-        <li>在需要使用的地方利用依赖注入机制注入Service</li>
-        <li>自定义的Service需要卸载内置的Service后面</li>
-        <li>内置Service的命名以$符号开头，自定义Service应该避免</li>
+        <li>Service、Provider、Factory本质都是Provider</li>
+        <li>Provider模式是“策略模式” + “抽象工厂模式” 的混合体</li>
     </ol>
     <div ng-controller='loadDataController'>
         用户名：<input type="text" ng-model="userName">
