@@ -9,6 +9,12 @@
 </head>
 <body>
     <div ng-controller='EventController'>
+        <h1>ng 事件，$broadcast、$emit以及$on</h1>
+        <ol>
+            <li>$emit只能向parent controller传递event与data</li>
+            <li>$broadcast只能向child controller传递event与data</li>
+            <li>$on用于接收event与data</li>
+        </ol>
         Root scope
         <tt>My Event</tt> count: {{count}}
         <ul>
