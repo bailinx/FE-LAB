@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>02_ng_bootstrap</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+<body>
+    <section ng-app="MyModule1">
+        <div ng-controller='helloAngular'>
+            <p>{{greeting.text}},Angular</p>
+        </div>
+    </section>
+    <section id="app2" ng-app="MyModule2">
+        <div ng-controller='hello2Angular'>
+            <p>{{greeting.text}},Angular</p>
+        </div>
+    </section>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.js"></script>
+    <script type="text/javascript">
+        var myModule = angular.module('MyModule1', []);
+
+        myModule.controller("helloAngular", ['$scope',
+            function HelloAngular ($scope) {
+                $scope.greeting = {
+                    text: 'hello world'
+                };
+            }
+        ]);
+
+        var myModule2 = angular.module('MyModule2', []);
+        myModule2.controller("hello2Angular", ['$scope',
+            function HelloAngular ($scope) {
+                $scope.greeting = {
+                    text: 'hello world2'
+                };
+            }
+        ]);
+        // 若一个页面中包含多个ng-app，则需要手动启动其他ng-app
+        angular.element(document).ready(function() {
+            // 第一个参数为ID，第二个为模块
+            angular.bootstrap(app2, ['MyModule2']);
+        })
+    </script>
+</body>
+</html>
