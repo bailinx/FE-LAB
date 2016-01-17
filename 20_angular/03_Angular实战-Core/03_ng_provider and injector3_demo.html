@@ -14,11 +14,16 @@
             <li>provider模式是策略模式和工厂模式的综合体</li>
             <li>核心目的是为了让接口和数据实现分离</li>
             <li>在ng中，所有provider都可以用来进行注入:</li>
-            <li>prvider/factory/service/constant/value</li>
+            <li>provider/factory/service/constant/value</li>
             <li>实际上factory/service/constant/value都是通过provider实现的</li>
             <li>以下类型的函数可以接受注入：</li>
             <li>controller/directive/filter/service/factor...</li>
             <li>ng中的“依赖注入”是通过provider和injector这两个机制联合实现的</li>
+        </ol>
+        <h1>provider/factory/service/constant/value</h1>
+        <ol>
+            <li>provider是基础，其余都是调用provider函数实现的，只是参数不同</li>
+            <li>从左向右，灵活性越来越差</li>
         </ol>
         <div ng-controller='helloAngular'>
             <p>{{greeting.text}},Angular</p>
@@ -39,22 +44,45 @@
             }
         ]);
 
-        myModule.factory('hello', function() {
-            return {
-                text: '手动注射.'
+        // provider方式
+        // myModule.provider('hello', function() {
+        //     return {
+        //         // provider必须有$get
+        //         $get: function() {
+        //             var name = "66tools";
+        //             function getName() {
+        //                 return name;
+        //             }
+        //             return {
+        //                 getName: getName
+        //             }
+        //         }
+        //     }
+        // });
+        // factory方式
+        // myModule.factory('hello', function() {
+        //     var name = "66tools.com";
+        //     function getName() {
+        //         return name;
+        //     }
+        //     return {
+        //         getName: getName
+        //     }
+        // });
+        myModule.service('hello', function() {
+            this.name = "blog.66tools.com";
+            this.getName = function() {
+                return this.name;
             }
-        });
+        })
 
         myModule.controller('MyCtrl', ['$scope', '$injector',
             function($scope, $injector) {
                 // console.log($scope);
                 // 注射器去invoke
-                // $injector.invoke(function(hello) {
-                //     console.log(hello.text);
-                // })
-                // console.log($injector);
-                // annotate分析函数参数（推断式注入）
-                console.log($injector.annotate(function(arg0, arg1){}));
+                $injector.invoke(function(hello) {
+                    console.log(hello.getName());
+                })
             }
         ]);
 
