@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="MyModule1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>04_ng_directive_link</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+<body ng-controller="helloAngular">
+    <h1>compile与link的区别</h1>
+    <ol>
+        <li>compile函数的作用是对指令的模板进行转换</li>
+        <li>link的作用是在模型和视图之间建立关联，包含在元素上注册时间监听</li>
+        <li>scope在链接阶段才会被绑定到元素上，因此compile阶段操作scope会报错</li>
+        <li>对于同一个指令的多个实例，compile指挥执行一次，而link对于指令的每个实例都会执行一次</li>
+        <li>一般情况下用link函数就足够了</li>
+        <li>如果编写自定义的compile函数，自定义的link函数无效，因为compile函数应该返回一个link函数供后续处理</li>
+    </ol>
+    <hello></hello>
+    <div repeat="5">
+        <p>你好啊~~~66tools</p>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.js"></script>
+    <script type="text/javascript">
+        var myModule = angular.module('MyModule1', []);
+
+        myModule.controller("helloAngular", ['$scope',
+            function ($scope) {
+
+            }
+        ]);
+        myModule.directive("hello", function () {
+            return {
+                restirct: 'E',
+                replace: true,
+                template: '<div>Hello ,66tools.</div>',
+                link: function (scope, element, attr, controller) {
+                    element.on('mouseenter', function () {
+                        console.log('鼠标进入~~');
+                    })
+                }
+            }
+        });
+        myModule.directive("repeat", function () {
+            return {
+                restirct: 'A',
+                replace: true,
+                compile: function (element, attrs, transclude) {
+                    // 这里开始对标签元素自身进行一些变换
+                    console.log("指令编译.");
+                    // <p>你好啊~~~66tools</p>
+                    var tpl = element.children().clone();
+                    console.log(tpl);
+                    for(var i = 0; i < attrs.repeat - 1; i++) {
+                        element.append(tpl.clone());
+                    }
+                    // 这里返回了一个link函数
+                    return function(scope, element, attr, controller) {
+                        console.log('指令链接..')
+                    }
+                },
+                // link: function(scope, element, attrs, controller) {
+                //     // 若包含compile和link，则link无效
+                // }
+            }
+        })
+    </script>
+</body>
+</html>

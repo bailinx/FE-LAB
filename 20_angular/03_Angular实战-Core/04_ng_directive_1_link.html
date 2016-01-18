@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="MyModule1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>04_ng_directive_link</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+<body>
+    <hello></hello>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.js"></script>
+    <script type="text/javascript">
+        var myModule = angular.module('MyModule1', []);
+
+        myModule.controller("helloAngular", ['$scope',
+
+        ]);
+        myModule.directive("hello", function () {
+            return {
+                restirct: 'E',
+                replace: true,
+                template: '<div>Hello ,66tools.</div>',
+                link: function (scope, element, attr, controller) {
+                    element.on('mouseenter', function () {
+                        console.log('鼠标进入~~');
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
