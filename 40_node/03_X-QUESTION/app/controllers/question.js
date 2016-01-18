@@ -43,7 +43,18 @@ quesController.get = function (req, res, next) {
 							answer += (temp+1) + ":" + options[temp].content + " ";
 						}
 					} else {
-						answer = options[ansList[0]].content;
+                        // 选择题
+						if(!options.length) {
+                            if("1" === ansList[0]) {
+                                answer = "√";
+                            } else {
+                                answer = "×"
+                            }
+
+                        } else {
+                            answer = options[ansList[0]].content;
+                        }
+
 					}
 					//var ansIndex = parseInt(dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer,10);
                     //item.result = item.options[ansIndex].content;
