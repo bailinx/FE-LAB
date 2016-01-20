@@ -6,7 +6,7 @@ version 0.15.1.
 
 ## Build & development
 
-1. Run `npm install -g yo grunt-cli bower` and `npm install -g generator-angular`
+1. Run `npm install -g yo glup bower` and `npm install -g generator-angular`
 
 2. Run `npm install` and `bower install`
 
