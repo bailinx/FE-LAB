@@ -1,0 +1,11 @@
+//sass style
+//-------------------------------
+$baseLineHeight:        2;
+$baseLineHeight:        1.5 !default;
+body{
+    line-height: $baseLineHeight;
+}
+h3 {
+    color: blue;
+    font-size: 2rem;
+}
