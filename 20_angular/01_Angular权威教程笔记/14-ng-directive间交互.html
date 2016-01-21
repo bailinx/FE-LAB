@@ -13,6 +13,8 @@
     <body>
         <h1>angular 指令进阶 - 指令中的双向绑定</h1>
         <ol>
+            <li>theirUrl没有和内部模板中的同名变量绑定是因为内置指令ng-model在它自身内部的隔离作用域和DOM的作用域（由
+控制器提供）之间创建了一个双向数据绑定（有点拗口，书上的意思是隔离作用域和由Controller提供的作用域建立一个双向绑定，是不行的）</li>
         </ol>
         <div ng-controller="MyController">
             URL：<input type="text" ng-model="theirUrl"><br>

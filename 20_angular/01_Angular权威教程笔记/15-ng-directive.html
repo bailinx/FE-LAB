@@ -1,0 +1,52 @@
+<html ng-app="myApp">
+    <head>
+        <title>Hello directive</title>
+        <style type="text/css">
+            input.ng-invalid {
+                border: 1px solid red;
+            }
+            input.ng-valid {
+                border: 1px solid green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>angular 指令进阶 - angular内置的指令</h1>
+        <ol>
+        </ol>
+        <div ng-controller="MyController">
+            <h2>ng-disabled</h2>
+            <input type="text" ng-disabled="isDisable"></input>
+            <h2>ng-readonly</h2>
+            <input type="text" ng-readonly="isReadOnly" ng-model="isReadOnly"></input>
+            <h2>ng-checked</h2>
+            <input type="checkbox" ng-checked="isChecked"></input>
+            <h2>ng-selected (点击复选框，改变select)</h2>
+            <input type="checkbox" ng-model="isTwoFish"></input><br>
+            <select>
+                <option>One Fish</option>
+                <option ng-selected="isTwoFish">Two Fish</option>
+            </select>
+            <h2>ng-href</h2>
+            <!-- 当 href 包含一个 {{expression}}时总是使用 ng-href -->
+            <a ng-href="{{  myHref  + '/?qq'}}">{{myHref}}</a>
+            <a href="{{ myHref }}">{{myHref}}</a>
+        </div>
+        <script src="lib/angular/angular.js"></script>
+        <script>
+            var myAppModule = angular.module("myApp", []);
+            myAppModule.controller('MyController', ['$scope', '$timeout', function($scope, $timeout){
+                $scope.isDisable = true;
+                $scope.isReadOnly = false;
+                $scope.isChecked = true;
+                $scope.myHref = "http://www.baidu.com";
+                $timeout(function() {
+                    $scope.isDisable = false;
+                    $scope.isReadOnly = true;
+                    $scope.isChecked = false;
+                }, 1000);
+            }]);
+
+        </script>
+    </body>
+</html>
