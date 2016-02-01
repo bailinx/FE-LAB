@@ -8,6 +8,20 @@
     <meta name="keywords" content="">
 </head>
 <body>
+    <h1>directive源码分析</h1>
+    <ol>
+        <li>bootstrap</li>
+        <li>createInjector(modulesToLoad, strictDi)</li>
+        <li>调用compile服务开始查找并编译指令（返回bootstrap）</li>
+    </ol>
+    <h1>调用compile服务开始查找并编译指令</h1>
+    <ol>
+        <li>从ng-app开始，递归子层DOM结构，收集指令<-(外部调用module的directive方法注册指令，例如：myModule.directive("hello", function(){})这里注册了一个hello指令，ng在启动的时候就会查找这个指令，“查找”操作是从ng-app开始的)</li>
+        <li>如果有需要，为指令生成childScope；childScope绑定到元素的data属性上</li>
+        <li>调用每个指令自己的compile函数生成compositeLinkFn函数</li>
+        <li>编译的结果是返回一个publicLinkFn函数</li>
+        <li>编译完成之后立即调用生成的publicLinkFn函数</li>
+    </ol>
     <section ng-app="MyModule1">
         <div ng-controller='helloAngular'>
             <p>{{greeting.text}},Angular</p>
