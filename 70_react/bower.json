@@ -22,6 +22,6 @@
   ],
   "dependencies": {
     "react": "~0.14.7",
-    "bowser": "browser#~1.0.0"
+    "babel": "*"
   }
 }
