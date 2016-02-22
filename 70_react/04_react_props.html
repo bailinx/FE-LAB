@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>React-props</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="libs/react/react.js"></script>
+    <script src="libs/react/react-dom.js"></script>
+    <!-- jsx语法转换器 -->
+    <script src="libs/babel/browser.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        // this.props对象的属性与组件的属性一一对应，但是有一个例外，就是this.props.children属性，它表示组件的所有子节点
+        var NotesList = React.createClass({
+            render: function() {
+                return (
+                    <ol>
+                    {
+                        React.Children.map(this.props.children, function (child) {
+                            return <li>{child}</li>
+                        })
+                    }
+                    </ol>
+                )
+            }
+        })
+
+        ReactDOM.render(
+            <NotesList>
+                <span>我是第一行</span>
+                <span>这是第二行</span>
+            </NotesList>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+
+</html>

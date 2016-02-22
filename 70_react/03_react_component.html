@@ -17,6 +17,10 @@
 <body>
     <div id="example"></div>
     <script type="text/babel">
+        // HelloMessage是一个组件类，模板插入<HelloMessage/>是时，会插入HelloMessage的一个实例
+        // 所有组件都必须有自己的render方法，用于输出组件
+        // 组件类的第一个字母必须大写，否则会报错
+        // 组件只能有一个顶层标签（必须嵌套在一个标签中，如：div）
         var HelloMessage = React.createClass({
             render: function () {
                 return <h1>hello, {this.props.name}</h1>;
