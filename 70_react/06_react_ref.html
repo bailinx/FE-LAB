@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>React-PropsTypes</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="libs/react/react.js"></script>
+    <script src="libs/react/react-dom.js"></script>
+    <!-- jsx语法转换器 -->
+    <script src="libs/babel/browser.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var MyComponent = React.createClass({
+            handleClik: function() {
+                this.refs.myTextInput.focus();
+            },
+            render: function() {
+                return (
+                    <div>
+                        <input type="text" ref="myTextInput"/>
+                        <input type="button" value="Focus the text input" onClick={this.handleClik}/>
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <MyComponent></MyComponent>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+
+</html>
