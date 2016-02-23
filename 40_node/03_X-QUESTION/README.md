@@ -1,6 +1,5 @@
-# X-MEAN-SEED
-一款基于MEAN（Mongo, Express, Angular, Node）的种子项目
+# X-QUESTION
+基于[X-MEAN-SEED](https://github.com/radishj/X-MEAN-SEED)的答题查询项目
 
-# Notices
-
-项目采用最新版本MEAN构建，目前正在构建中(unfinished)，随时有可能更新..
+# Demo
+![](https://github.com/radishj/X-Zone/blob/master/40_node/03_X-QUESTION/public/img/demo2.gif?raw=true)

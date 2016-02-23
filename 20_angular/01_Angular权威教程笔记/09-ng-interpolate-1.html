@@ -26,6 +26,7 @@
                 $scope.$watch('emailBody', function (body) {
                     if (body) {
                         var template = $interpolate(body);
+                        // {to: $scope.to} 第一个代表上面{{to}}表达式
                         $scope.previewText = template({to: $scope.to});
                     }
                 })
