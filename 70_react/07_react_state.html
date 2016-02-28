@@ -18,8 +18,9 @@
     <div>
         <h1>this.state</h1>
         <ul>
-            <li>组件避免不了与用户互动，react一大创新，就是将组建看成一个状态机</li>
-            <li>一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染</li>
+            <li>组件避免不了与用户互动，react一大创新，就是将组建看成一个状态机,一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染</li>
+            <li>改变state会触发this.render,再次渲染组件</li>
+            <li>this.props和this.state都用于表述组件的特性，但this.props表示哪些一旦定义，就不再改变的特性，而this.state是会随着用户互动而产生变化的特性</li>
         </ul>
     </div>
     <div id="example"></div>
@@ -30,6 +31,12 @@
                     liked: false
                 }
             },
+            // 设置默认的Props
+            getDefaultProps: function() {
+                return {
+                    name: 'baili'
+                }
+            },
             handleClik: function() {
                 this.setState({liked: !this.state.liked})
             },
@@ -37,7 +44,7 @@
                 var text = this.state.liked ? "like" : "haven\'t liked";
                 return (
                     <p onClick={this.handleClik}>
-                        You {text} this.Click to toggle.
+                        Hello, {this.props.name}, You {text} this.Click to toggle.
                     </p>
                 );
             }
