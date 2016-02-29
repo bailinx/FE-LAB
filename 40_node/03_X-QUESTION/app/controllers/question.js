@@ -89,7 +89,9 @@ quesController.update = function (req, res, next) {
 }
 
 quesController.export = function (req, res, next) {
-	var result = [];
+	var result = [],
+		fields = ['question', 'result'],
+		fieldNames = ['问题', '标准答案'];
 	quesModel.find({}, function (err, dataList) {
 		if( !err ) {
 			if(dataList.length > 0) {
@@ -127,7 +129,17 @@ quesController.export = function (req, res, next) {
 			}
 
 		}
-		res.json(result);
+		json2csv({ data: result, fields: fields, fieldNames: fieldNames}, function(err, csv) {
+			if (err) console.log(err);
+			// 设置 header 使浏览器下载文件
+			res.setHeader('Content-Description', 'File Transfer');
+			res.setHeader('Content-Type', 'application/csv; charset=utf-8');
+			res.setHeader('Content-Disposition', 'attachment; filename=data.csv');
+			res.setHeader('Expires', '0');
+			res.setHeader('Cache-Control', 'must-revalidate');
+			res.send('\uFEFF' + csv);
+		});
+
 	});
 }
 module.exports = quesController;
