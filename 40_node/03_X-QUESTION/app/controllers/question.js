@@ -1,7 +1,8 @@
 'use strict';
 var quesController = {},
 	quesDao = require('../dao/question'),
-	quesModel = require('../models/index').question;
+	quesModel = require('../models/index').question,
+	json2csv = require('json2csv');
 
 quesController.list = function (req, res, next) {
 	/*quesDao.list(function (err, data) {
@@ -87,4 +88,46 @@ quesController.update = function (req, res, next) {
 	res.send('update');
 }
 
+quesController.export = function (req, res, next) {
+	var result = [];
+	quesModel.find({}, function (err, dataList) {
+		if( !err ) {
+			if(dataList.length > 0) {
+				for( var idx=0; idx<dataList.length; idx++) {
+					var item = {}, answer = "";
+					item.question = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].content;
+
+					// item.options = [];
+					var options = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].optionInfoList;
+					// dataList[idx].examRecordItems[0].question.questInfoDetailList[0].answer
+					var ansList = dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer.split(',');
+					if(ansList.length > 1) {
+						for( var temp=0; temp< ansList.length; temp++ ) {
+							answer += (temp+1) + ":" + options[temp].content + " ";
+						}
+					} else {
+						// 选择题
+						if(!options.length) {
+							if("1" === ansList[0]) {
+								answer = "√";
+							} else {
+								answer = "×"
+							}
+
+						} else {
+							answer = options[ansList[0]].content;
+						}
+
+					}
+					//var ansIndex = parseInt(dataList[idx].examRecordItems[0].questInfo.questInfoDetailList[0].answer,10);
+					//item.result = item.options[ansIndex].content;
+					item.result = answer;
+					result.push(item);
+				}
+			}
+
+		}
+		res.json(result);
+	});
+}
 module.exports = quesController;

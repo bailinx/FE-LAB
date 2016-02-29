@@ -12,6 +12,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "hbs": "~3.1.0",
+    "json2csv": "^3.2.0",
     "less-middleware": "1.0.x",
     "log4js": "^0.6.29",
     "mongodb": "^2.0.52",
