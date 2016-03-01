@@ -134,7 +134,7 @@ quesController.export = function (req, res, next) {
 			// 设置 header 使浏览器下载文件
 			res.setHeader('Content-Description', 'File Transfer');
 			res.setHeader('Content-Type', 'application/csv; charset=utf-8');
-			res.setHeader('Content-Disposition', 'attachment; filename=data.csv');
+			res.setHeader('Content-Disposition', 'attachment; filename=Question.csv');
 			res.setHeader('Expires', '0');
 			res.setHeader('Cache-Control', 'must-revalidate');
 			res.send('\uFEFF' + csv);

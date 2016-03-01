@@ -224,3 +224,34 @@ input{
     -moz-transform: rotateX(360deg) rotateY(360deg);
   }
 }
+
+.circle {
+  display: block;
+  background: white;
+  border-radius: 100%;
+  border: 1px solid white;
+  height: 200px;
+  width: 200px;
+  margin-top: 150px;
+  animation: animationsCircle 4s infinite linear alternate;
+}
+@-webkit-keyframes animationsCircle {
+  0% {
+    transform: rotate(0);
+    margin-left: 0%;
+  }
+  100% {
+    transform: rotate(360deg);
+    margin-left: 100%;
+  }
+}
+@keyframes animationsCircle {
+  0% {
+    transform: rotate(0);
+    margin-left: 0%;
+  }
+  100% {
+    transform: rotate(360deg);
+    margin-left: 100%;
+  }
+}
