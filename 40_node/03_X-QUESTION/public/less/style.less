@@ -227,15 +227,29 @@ input{
 
 .circle {
   display: block;
-  background: white;
-  border-radius: 100%;
   border: 1px solid white;
   height: 200px;
   width: 200px;
-  margin-top: 150px;
-  animation: animationsCircle 4s infinite linear alternate;
+  margin-top: 100px;
+
+  animation: animations-circle 4s infinite linear alternate;
+  & img {
+    transition:all 1s;
+    -webkit-transition:all 1s;
+    -moz-transition:all 1s;
+    -o-transition:all 1s;
+    &:hover {
+      transform:scale(1.2);
+      -webkit-transform:scale(1.2);
+      -moz-transform:scale(1.2);
+      -o-transform:scale(1.2);
+      -ms-transform:scale(1.2);
+    }
+  }
+
 }
-@-webkit-keyframes animationsCircle {
+
+@-webkit-keyframes animations-circle {
   0% {
     transform: rotate(0);
     margin-left: 0%;

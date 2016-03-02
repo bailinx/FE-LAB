@@ -91,7 +91,7 @@ quesController.update = function (req, res, next) {
 quesController.export = function (req, res, next) {
 	var result = [],
 		fields = ['question', 'result'],
-		fieldNames = ['问题', '标准答案'];
+		fieldNames = ['问题(请拖动单元格宽度)', '参考'];
 	quesModel.find({}, function (err, dataList) {
 		if( !err ) {
 			if(dataList.length > 0) {
