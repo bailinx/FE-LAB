@@ -16,9 +16,19 @@
 
 <body>
     <div>
-        <h1>组件的生命周期</h1>
+        <h1>组件的生命周期分为三个状态：</h1>
         <ul>
-            <li>textarea元素、select元素、radio元素都输入这种情况</li>
+            <li>Mounting:已插入真实DOM</li>
+            <li>Updating:正在被重新渲染</li>
+            <li>Unmounting:已移除真实DOM</li>
+        </ul>
+        <h1>React为每个状态都提供两种处理函数，will（进入状态之前调用）和did（进入状态之后调用），三种状态共五种处理函数</h1>
+        <ul>
+            <li>componentWillMount():插入真实DOM之前</li>
+            <li>componentDidMount():插入真实DOM之后</li>
+            <li>componentWillUpdate(object nextProps, object nextState):重新渲染之前</li>
+            <li>componentDidUpdate(object preProps, object preState):重新渲染之后</li>
+            <li>componentWillUnmount()</li>
         </ul>
     </div>
     <div id="demo"></div>
@@ -28,6 +38,12 @@
                 return {
                     value: 'Hello baili'
                 }
+            },
+            componentWillUpdate: function(nextProps, nextState) {
+                console.log("下一个状态 -> " + JSON.stringify(nextState));
+            },
+            componentDidUpdate: function(preProps, preState) {
+                console.log("前一个状态 -> " + JSON.stringify(preState));
             },
             handleClik: function(event) {
                 this.setState({value: event.target.value})
