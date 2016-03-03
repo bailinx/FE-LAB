@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>React-组件的生命周期</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="libs/react/react.js"></script>
+    <script src="libs/react/react-dom.js"></script>
+    <!-- jsx语法转换器 -->
+    <script src="libs/babel/browser.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>组件的生命周期分为三个状态：</h1>
+        <ul>
+            <li>Mounting:已插入真实DOM</li>
+            <li>Updating:正在被重新渲染</li>
+            <li>Unmounting:已移除真实DOM</li>
+        </ul>
+        <h1>React为每个状态都提供两种处理函数，will（进入状态之前调用）和did（进入状态之后调用），三种状态共五种处理函数</h1>
+        <ul>
+            <li>componentWillMount():插入真实DOM之前</li>
+            <li>componentDidMount():插入真实DOM之后</li>
+            <li>componentWillUpdate(object nextProps, object nextState):重新渲染之前</li>
+            <li>componentDidUpdate(object preProps, object preState):重新渲染之后</li>
+            <li>componentWillUnmount()</li>
+        </ul>
+    </div>
+    <div id="demo"></div>
+    <script type="text/babel">
+        var Hello = React.createClass({
+            getDefaultProps: function() {
+                return {
+                    name: 'baili'
+                }
+            },
+            getInitialState: function() {
+                return {
+                    opacity: 1.0
+                };
+            },
+            handleClik: function() {
+                alert('点我作甚');
+            },
+            // 插入真实节点后
+            componentDidMount: function() {
+                this.timer = setInterval(function(){
+                    var opacity = this.state.opacity;
+                    opacity -=.05;
+                    if(opacity < 0.1) {
+                        opacity = 1.0;
+                    }
+                    this.setState({
+                        opacity: opacity
+                    });
+                }.bind(this), 100);
+            },
+
+            render: function() {
+                return (
+                    <div style={{opacity: this.state.opacity}} onClick={this.handleClik}>Hello {this.props.name}
+                    </div>
+                );
+            }
+        })
+        ReactDOM.render(
+            <Hello/>,
+            document.getElementById("demo")
+        );
+    </script>
+</body>
+
+</html>
