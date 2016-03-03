@@ -62,6 +62,8 @@
             },
 
             render: function() {
+                // 为什么不是style="opacity: {xxx}"
+                // 因为React组件样式是一个对象，所以第一重大括号表示Javascript语法，第二重表示样式对象
                 return (
                     <div style={{opacity: this.state.opacity}} onClick={this.handleClik}>Hello {this.props.name}
                     </div>
