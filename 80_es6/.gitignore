@@ -30,4 +30,4 @@ node_modules
 .bowerrc
 
 # libs
-libs
+bower_components
