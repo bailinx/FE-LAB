@@ -1,0 +1,27 @@
+{
+  "name": "04_Angular-Promise",
+  "homepage": "https://github.com/radishj/X-Zone",
+  "authors": [
+    "radishj <423261989@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "学习笔记"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+
+  }
+}
