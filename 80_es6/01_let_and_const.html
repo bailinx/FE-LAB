@@ -3,6 +3,22 @@
 <head>
     <title>let and const</title>
     <script src="bower_components/babel/browser.js"></script>
+    <script type="text/babel">
+    // 将type="text/javascript"改为text/babel书写ES6语法
+    function f() {
+        console.log('I am outside');
+    }
+    (function(){
+        // ES5中不管会不会进入到代码块，都会函数提升
+        // ES6语法就显示I am outside，不会存在函数提升
+        if(false) {
+            function f() {
+                console.log('I an inside');
+            }
+        }
+        f();
+    })();
+    </script>
 </head>
 <body>
 
