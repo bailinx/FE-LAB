@@ -1,0 +1,26 @@
+{
+  "name": "es6-study",
+  "homepage": "https://github.com/radishj/X-Zone",
+  "authors": [
+    "radishj <423261989@qq.com>"
+  ],
+  "description": "example of es6",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "es6",
+    "study"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "babel": "*"
+  }
+}
