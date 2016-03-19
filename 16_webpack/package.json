@@ -1,0 +1,21 @@
+{
+  "name": "react-webpack",
+  "version": "1.0.0",
+  "description": "react webpack test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "radish",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.7.2",
+    "babel-loader": "^6.2.4",
+    "gulp-webpack": "^1.5.0",
+    "jsx-loader": "^0.13.2"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "react webpack",
+  "homepage": "https://github.com/radishj/X-Zone",
+  "authors": [
+    "radishj <423261989@qq.com>"
+  ],
+  "description": "example of react with webpack",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "react",
+    "study"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.14.7",
+    "babel": "*"
+  }
+}
