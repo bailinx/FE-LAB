@@ -1,7 +1,7 @@
-var React = require('react');
-var Index = require('index')
+var ReactDOM = require('react-dom');
+var Index = require('./index.jsx');
 
-React.render(
+ReactDOM.render(
     <Index />,
     document.getElementById('example')
 );
