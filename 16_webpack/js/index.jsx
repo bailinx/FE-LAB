@@ -1,5 +1,5 @@
 var React = require('react');
-var Hello = require('./hello.jsx');
+var Hello = require('./hello');
 
 module.exports = React.createClass({
     render: function () {
