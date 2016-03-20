@@ -6,7 +6,7 @@ module.exports = React.createClass({
         var names = ['smith', 'baili', 'radishj'];
         var nodes = [];
         names.map(function(name) {
-            nodes.push(<Hello name={name}/>)
+            nodes.push(<Hello key={name} name={name}/>)
         });
         return (
             <div>{nodes}</div>
