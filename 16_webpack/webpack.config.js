@@ -8,8 +8,9 @@ module.exports = {
     ],
     output: {
         path: __dirname + '/assets',
-        // 这里如果不用url，则会出现随机的文件名，导致引用不正确
         publicPath: 'http://localhost:3000/assets',
+        // 直接写文件地址会有跨域等问题，还是直接url的好
+        // publicPath: '/assets',
         filename: 'bundle.js'
     },
     resolve: {
@@ -37,6 +38,7 @@ module.exports = {
     },
     plugins: [
         // 一定要加这个插件
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ]
 }

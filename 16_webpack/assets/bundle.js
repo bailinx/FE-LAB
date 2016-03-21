@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4e78f1206bc3f57c4772"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3a3bd00738c6c769b9fd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -27802,7 +27802,7 @@
 
 	module.exports = React.createClass({ displayName: "module.exports",
 	    render: function () {
-	        var names = ['smith', 'baili', 'radishj', 'test reat hot loader'];
+	        var names = ['bailixxxxsss', 'radishj', 'test react hot loader'];
 	        var nodes = [];
 	        names.map(function (name) {
 	            nodes.push(React.createElement(Hello, { key: name, name: name }));
