@@ -39,6 +39,12 @@ module.exports = {
     plugins: [
         // 一定要加这个插件
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        // 压缩js插件
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
     ]
 }
