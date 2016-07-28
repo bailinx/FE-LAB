@@ -29,7 +29,7 @@
                 /* align-items: flex-start | flex-end | center | baseline | stretch*/
                 /*              上对齐        下对齐     垂直居中   baseline   拉伸*/
                 /*定义在交叉轴上的对齐方式*/
-                align-items: center;
+                align-items: stretch;
 
                 /*aligin-content: flex-start | flex-end | center | space-between | space-around | stretch*/
                 /*flex-start：与交叉轴的起点对齐。
@@ -45,7 +45,7 @@
                 border: 1px #60BE29 solid;
                 box-sizing: border-box;
                 text-align: center;
-                /*width: 25%;*/
+                width: 25%;
 
                 /* order: 0 | 1 | 3...*/
                 /*order 属性定义项目的排列顺序。数值越小越靠前*/
@@ -72,6 +72,11 @@
                 /*实际上定义项目在交叉轴上的对齐方式*/
                 align-self: auto;
             }
+            .item:first-child {
+                order: 1;
+                flex-grow: 0;
+                align-self: flex-end;
+            }
         </style>
     </head>
     <body>
@@ -80,6 +85,7 @@
             <div class="item">2</div>
             <div class="item">3</div>
             <div class="item">4</div>
+            <div class="item">5</div>
         </div>
     </body>
 </html>
