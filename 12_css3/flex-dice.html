@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>flex 骰子</title>
+        <style media="screen">
+            body {
+                background-color: #2e2e2e;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            [class$="face"] {
+                display: flex;
+                justify-content: center;
+                flex: 0 0 auto;
+
+                width: 104px;
+                height: 104px;
+                background-color: #e7e7e7;
+                border-radius: 10%;
+
+                margin: 16px;
+                padding: 4px;
+
+                box-shadow: inset 0 5px white,
+                            inset 0 -5px #bbb,
+                            inset 5px 0 #d7d7d7,
+                            inset -5px 0 #d7d7d7;
+            }
+            .pip {
+                display: block;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background-color: #333;
+                box-shadow: inset 0 3px #111,
+                            inset 0 -3px #555;
+            }
+
+            .first-face {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .second-face {
+                display: flex;
+                justify-content: space-between;
+            }
+            .second-face span:nth-child(2) {
+                align-self: flex-end;
+            }
+
+            .three-face {
+                display: flex;
+                justify-content: space-between;
+            }
+            .three-face span:nth-child(2) {
+                align-self: center;
+            }
+            .three-face span:nth-child(3) {
+                align-self: flex-end;
+            }
+
+            .fourth-face, .sixth-face{
+                display: flex;
+                justify-content: space-between;
+            }
+            .fourth-face .colume, .sixth-face .colume {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .fifth-face {
+                display: flex;
+                justify-content: space-between;
+            }
+            .fifth-face .colume {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .fifth-face .colume:nth-child(2) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="first-face">
+            <span class="pip"></span>
+        </div>
+        <div class="second-face">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="three-face">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="fourth-face">
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+        </div>
+        <div class="fifth-face">
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+            <div class="colume">
+                <span class="pip"></span>
+            </div>
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+        </div>
+        <div class="sixth-face">
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+            <div class="colume">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+        </div>
+    </body>
+</html>
