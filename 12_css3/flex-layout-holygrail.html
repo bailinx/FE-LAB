@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>flex-layout-percent</title>
+    <style media="screen">
+        body {
+            background-color: #2E2E2E;
+        }
+        h3 {
+            color: #E7E7E7;
+        }
+        .holygrail {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .holygrail header, .holygrail footer {
+            flex: 1;
+        }
+        .holygrail .body {
+            display: flex;
+            flex: 1;
+        }
+        .body .content {
+            flex: 1;
+
+            border: 1px #68cb96 solid;
+            box-sizing: border-box;
+        }
+        .body .nav, .body .aside {
+            /*不能放大不能缩小 12em宽*/
+            flex: 0 0 12em;
+
+            border: 1px #fff solid;
+            box-sizing: border-box;
+        }
+        .body .nav {
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="holygrail">
+        <header>
+            <h3>圣杯布局</h3>
+        </header>
+        <div class="body">
+            <main class="content"></main>
+            <nav class="nav"></nav>
+            <aside class="aside"></aside>
+        </div>
+        <footer>
+            <span>我是尾部</span>
+        </footer>
+    </div>
+</body>
+</html>
